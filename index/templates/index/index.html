@@ -1,0 +1,83 @@
+{% load static %}
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="sk" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThorQA</title>
+    {% tailwind_css %}
+    <style>
+        :root {
+            --nav-h: 80px;
+            --footer-clear: 85px;
+        }
+        .hero-photo-left,
+        .hero-photo-right {
+            object-position: 50% 25%;
+        }
+        .hero-photo-left { transform: scaleX(-1); }
+        @media (min-width: 1024px) {
+            .hero-photo-left,
+            .hero-photo-right {
+                object-position: 50% 0%;
+                transform-origin: 50% 0%;
+            }
+            .hero-photo-left { transform: scaleX(-1) scale(1.15); }
+            .hero-photo-right { transform: scale(1.15); }
+        }
+    </style>
+</head>
+<body class="bg-base-200 text-base-content antialiased font-sans h-dvh overflow-hidden relative flex flex-col justify-between">
+
+    <!-- HLAVNÉ POZADIE -->
+    <div class="absolute inset-0 bg-[#151515] z-0"></div>
+
+    <!-- NAVBAR -->
+    <nav id="site-nav" class="absolute top-0 left-0 w-full z-50 px-4 md:px-8 py-5 flex flex-row items-center justify-between bg-[#151515] border-b border-base-300/10 shadow-lg">
+        <div>
+            <a class="text-2xl font-black tracking-wider text-primary">Thor<span class="text-accent">QA</span></a>
+        </div>
+        <div>
+            <ul class="menu menu-horizontal px-0 font-medium gap-1 sm:gap-2">
+                <li><button class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3"
+                    hx-get="{% url 'home:home' %}"
+                    hx-target="#main-content-container"
+                    hx-swap="innerHTML"
+                    hx-push-url="true">Services</button></li>
+                <li><a href="#o-mne" class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3">About</a></li>
+                <li><a href="#kontakt" class="btn btn-primary btn-sm px-3 sm:px-4">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="main-content-container" class="w-full h-full relative">
+        {% block content%}
+        {% endblock %}
+    </div>
+
+    <!-- PEVNÝ A PLNE TMAVÝ FOOTER -->
+    <footer id="site-footer" class="w-full h-[70px] bg-[#151515] border-t border-base-300/10 shadow-lg px-4 md:px-8 flex items-center justify-center relative z-50">
+        <div class="flex items-center gap-2 text-center">
+            <span class="font-black text-sm tracking-wider text-primary">Thor<span class="text-accent">QA</span></span>
+            <span class="text-xs text-neutral-content/40">© {% now "Y" %} - Patrik Hrmo</span>
+        </div>
+    </footer>
+
+    <script>
+        function updateChromeOffsets() {
+            var nav = document.getElementById('site-nav');
+            var footer = document.getElementById('site-footer');
+            if (nav) {
+                document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+            }
+            if (footer) {
+                document.documentElement.style.setProperty('--footer-clear', footer.offsetHeight + 'px');
+            }
+        }
+        updateChromeOffsets();
+        window.addEventListener('resize', updateChromeOffsets);
+        window.addEventListener('load', updateChromeOffsets);
+    </script>
+</body>
+</html>

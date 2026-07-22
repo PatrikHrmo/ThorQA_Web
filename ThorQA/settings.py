@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'index',
     'tailwind',
     'theme',
+    'home',
+    'django_htmx',
+    'template_partials',
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_htmx.middleware.HtmxMiddleware',
 ]
 
 ROOT_URLCONF = 'ThorQA.urls'
