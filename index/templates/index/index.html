@@ -45,16 +45,20 @@
         <div>
             <ul class="menu menu-horizontal px-0 font-medium gap-1 sm:gap-2">
                 <li><button class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3"
-                    hx-get="{% url 'home:home' %}"
-                    hx-target="#main-content-container"
-                    hx-swap="innerHTML"
-                    hx-push-url="true">Home</button></li>
+                            hx-get="{% url 'home:home' %}"
+                            hx-target="#main-content-container"
+                            hx-swap="innerHTML"
+                            hx-push-url="true">Home</button></li>
                 <li><button class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3"
-                    hx-get="{% url 'about:about' %}"
-                    hx-target="#main-content-container"
-                    hx-swap="innerHTML"
-                    hx-push-url="true">About</button></li>
-                <li><a href="#kontakt" class="btn btn-primary btn-sm px-3 sm:px-4">Contact</a></li>
+                            hx-get="{% url 'about:about' %}"
+                            hx-target="#main-content-container"
+                            hx-swap="innerHTML"
+                            hx-push-url="true">About</button></li>
+                <li><button class="btn btn-primary btn-sm px-3 sm:px-4"
+                            hx-get="{% url 'contact:contact' %}"
+                            hx-target="#main-content-container"
+                            hx-swap="innerHTML"
+                            hx-push-url="true">Contact</button></li>
             </ul>
         </div>
     </nav>
