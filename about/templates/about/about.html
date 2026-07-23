@@ -1,0 +1,141 @@
+{% extends 'index/index.html' %}
+{% load static %}
+{% load partials %}
+{% block content %}
+    {% partialdef about inline %}
+    <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden">
+
+        <!-- ==================== MOBILNÁ VERZIA (STRIKTNE ZAFIXOVANÁ BEZ SCROLLU) ==================== -->
+        <!-- justify-between a h-full rozloží horný a dolný blok presne do voľného priestoru medzi nav a footer -->
+        <div class="flex lg:hidden flex-col items-center justify-between w-full h-full overflow-hidden">
+
+            <!-- HORNÝ BLOK: Presne tvojich 50dvh a max-h-24dvh, ktoré sa ani nepohnú -->
+            <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4 flex-shrink-0">
+
+                <!-- WHAT I DO - Rozostup presných 52px -->
+                <div class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
+                    WHAT I DO
+                </div>
+
+                <!-- FOTKY -->
+                <div class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] max-h-[24dvh]">
+                    <!-- Ľavá fotka -->
+                    <div class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
+                        <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
+                    </div>
+                    <!-- Pravá fotka -->
+                    <div class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
+                        <img src="{% static 'images/me.jpg' %}" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPODNÝ BLOK: Stlačený a zmenšený, aby uvoľnil miesto a zmestil sa nad footer -->
+            <div class="flex flex-col flex-1 items-center justify-center text-center w-full max-w-md pb-4 gap-4 overflow-hidden">
+
+                <!-- ZOZNAM AKTIVÍT - Zmenšený gap na 1 a text na text-xs pre úsporu miesta -->
+                <div class="flex flex-col items-center gap-1 text-xs font-light text-neutral-content leading-relaxed">
+                    <span>Test design & execution</span>
+                    <span>Test scripts automation</span>
+                    <span>Manual testing</span>
+                    <span>Reporting</span>
+                    <span>Documentation</span>
+                </div>
+
+                <!-- TECH STACK & EXPERTISE FOR MOBILE (Zmenšené písmo) -->
+                <div class="flex flex-col gap-2 w-full max-w-xs text-center">
+                    <!-- Core Tools -->
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-0.5">Core Tools</span>
+                        <div class="flex flex-wrap justify-center gap-1.5">
+                            <span class="text-neutral-content font-bold text-[10px]">Robot Framework</span>
+                            <span class="text-neutral-content/30 text-[10px] select-none">•</span>
+                            <span class="text-neutral-content font-bold text-[10px]">Playwright</span>
+                        </div>
+                    </div>
+                    <!-- Coverage -->
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-0.5">Coverage</span>
+                        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-0 text-neutral-content font-medium text-[10px]">
+                            <span>UI & Web</span>
+                            <span class="text-neutral-content/20 select-none">•</span>
+                            <span>API</span>
+                            <span class="text-neutral-content/20 select-none">•</span>
+                            <span>Databases</span>
+                            <span class="text-neutral-content/20 select-none">•</span>
+                            <span>Embedded</span>
+                            <span class="text-neutral-content/20 select-none">•</span>
+                            <span>Performance</span>
+                            <span class="text-neutral-content/20 select-none">•</span>
+                            <span>Emails</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ==================== DESKTOP VERSION (VERTICAL FLUID COLUMN) ==================== -->
+        <!-- ĽAVÝ PANEL -->
+        <div class="hidden lg:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+             style="clip-path: ellipse(100% 100% at 0% 50%);">
+            <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
+        </div>
+
+        <!-- PRAVÝ PANEL -->
+        <div class="hidden lg:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+             style="clip-path: ellipse(100% 100% at 100% 50%);">
+            <img src="{% static 'images/me.jpg' %}" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+        </div>
+
+        <!-- HLAVNÝ OBSAH (Desktop - Plochý stĺpec vycentrovaný na absolútny stred) -->
+        <main class="hidden lg:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12">
+            <div class="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
+
+                <!-- 1. DESKTOP ODZNAK - Rozostup presných 52px -->
+                <div class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
+                    WHAT I DO
+                </div>
+
+                <!-- 2. DESKTOP ZOZNAM AKTIVÍT POD SEBOU - Rozostup presných 52px -->
+                <div class="flex flex-col items-center gap-2 text-xl font-light text-neutral-content leading-relaxed" style="margin-bottom: 52px;">
+                    <span>Test design & execution</span>
+                    <span>Test scripts automation</span>
+                    <span>Manual testing</span>
+                    <span>Reporting</span>
+                    <span>Documentation</span>
+                </div>
+
+                <!-- 3. CORE TOOLS (Zarovnané pod seba, vodorovný čistý rad s rozostupom 52px) -->
+                <div class="flex flex-col items-center w-full" style="margin-bottom: 52px;">
+                    <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">Core Tools</span>
+                    <div class="flex items-center justify-center gap-3 text-neutral-content font-bold text-base leading-none">
+                        <span>Robot Framework</span>
+                        <span class="text-neutral-content/30 select-none">•</span>
+                        <span>Playwright</span>
+                    </div>
+                </div>
+
+                <!-- 4. COVERAGE (Zarovnané pod seba, vodorovný čistý rad s oddeľovacími bodkami) -->
+                <div class="flex flex-col items-center w-full">
+                    <span class="text-xs uppercase font-bold tracking-widest text-accent block mb-3">Coverage</span>
+                    <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 text-neutral-content font-medium text-sm leading-none max-w-lg">
+                        <span>UI & Web</span>
+                        <span class="text-neutral-content/20 select-none">•</span>
+                        <span>API</span>
+                        <span class="text-neutral-content/20 select-none">•</span>
+                        <span>Databases</span>
+                        <span class="text-neutral-content/20 select-none">•</span>
+                        <span>Embedded</span>
+                        <span class="text-neutral-content/20 select-none">•</span>
+                        <span>Performance</span>
+                        <span class="text-neutral-content/20 select-none">•</span>
+                        <span>Emails</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+    {% endpartialdef %}
+{% endblock %}
