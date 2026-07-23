@@ -4,92 +4,58 @@
 {% block content %}
     {% partialdef home inline %}
     <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden">
-
-        <!-- ==================== MOBILNÁ VERZIA (ZAFIXOVANÁ SYMETRIA S ABOUT.HTML) ==================== -->
+        <!-- MOBILE -->
         <div class="flex lg:hidden flex-col items-center justify-between w-full h-full">
-
-            <!-- HORNÝ BLOK: Identická pozícia fotiek a odznaku na 50dvh, ktorá zamedzí skákaniu -->
-            <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4">
-
-                <!-- ODZNAK - Rozostup 52px -->
-                <div class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
+            <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4 flex-shrink-0">
+                <div data-testid="home-mobile-header" class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
                     FREELANCE QA ENGINEER
                 </div>
-
-                <!-- FOTKY - Rozostup 52px (v toku) -->
                 <div class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] max-h-[24dvh]">
-                    <!-- Ľavá fotka -->
-                    <div class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
+                    <div data-testid="home-mobile-photo-left" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
                         <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
                     </div>
-                    <!-- Pravá fotka -->
-                    <div class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
-                        <img src="{% static 'images/me.jpg' %}" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+                    <div data-testid="home-mobile-photo-right" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
+                        <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
                     </div>
                 </div>
             </div>
-
-            <!-- SPODNÝ BLOK: Text a tlačidlá, vycentrované v spodnej časti -->
-            <div class="flex flex-col flex-1 items-center justify-center text-center w-full max-w-md pb-4">
-
-                <!-- HLAVNÝ NADPIS -->
+            <div class="flex flex-col flex-1 items-center justify-center text-center w-full max-w-md pb-4 overflow-hidden" data-testid="home-main-block">
                 <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-neutral-content leading-tight whitespace-normal mb-4">
                     SPOT 5 DIFFERENCES<br>or just leave it to me instead
                 </h1>
-
-                <!-- PODNADPIS - Rozostup 52px -->
                 <p class="text-xs sm:text-sm opacity-85 font-light text-neutral-content leading-relaxed max-w-sm" style="margin-bottom: 52px;">
                     professional test automation & QA services<br>to catch what human eyes can miss
                 </p>
-
-                <!-- TLAČIDLÁ POD TEXTOM -->
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 w-full sm:w-auto">
                     <a href="#viac" class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral w-44 sm:w-64">SHOW ME</a>
                 </div>
             </div>
-
         </div>
-        <!-- ==================== DESKTOP VERZIA (ZOSÚLADENÝ RYTMUS MEDZIER O 52px) ==================== -->
-
-        <!-- DESKTOP ĽAVÝ PANEL -->
-        <div class="hidden lg:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+        <!-- DESKTOP -->
+        <div data-testid="home-desktop-image-left" class="hidden lg:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
              style="clip-path: ellipse(100% 100% at 0% 50%);">
             <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
         </div>
-
-        <!-- DESKTOP PRAVÝ PANEL -->
-        <div class="hidden lg:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+        <div data-testid="home-desktop-image-right" class="hidden lg:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
              style="clip-path: ellipse(100% 100% at 100% 50%);">
-            <img src="{% static 'images/me.jpg' %}" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+            <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
         </div>
-
-        <!-- HLAVNÝ OBSAH (Desktop - Upravené rozostupy na presných 52px medzi prvkami) -->
-        <main class="hidden lg:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12">
+        <main class="hidden lg:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12" data-testid="home-desktop-mainblock">
             <div class="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
-
-                <!-- 1. DESKTOP ODZNAK - Rozostup presných 52px -->
                 <div class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
                     FREELANCE QA ENGINEER
                 </div>
-
-                <!-- 2. DESKTOP NADPIS - Rozostup presných 52px -->
                 <h1 class="text-4xl md:text-5xl xl:text-6xl font-black tracking-tight text-neutral-content leading-tight whitespace-normal" style="margin-bottom: 52px;">
                     SPOT 5 DIFFERENCES<br>or just leave it to me instead
                 </h1>
-
-                <!-- 3. DESKTOP PODNADPIS - Rozostup presných 52px -->
                 <p class="text-lg opacity-85 font-light text-neutral-content leading-relaxed max-w-md" style="margin-bottom: 52px;">
                     professional test automation & QA services<br>to catch what human eyes can miss
                 </p>
-
-                <!-- 4. TLAČIDLO -->
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto">
-                    <a href="#viac" class="btn btn-outline btn-md text-white border-white hover:bg-white hover:text-neutral w-64">SHOW ME</a>
+                    <button type="button" class="btn btn-outline btn-md text-white border-white hover:bg-white hover:text-neutral w-64">SHOW ME</button>
                 </div>
-
             </div>
         </main>
-
     </div>
     {% endpartialdef %}
 {% endblock %}

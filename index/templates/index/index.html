@@ -9,18 +9,17 @@
     <title>ThorQA</title>
     {% tailwind_css %}
     {% htmx_script %}
-
-    <!-- OPRAVA: Pevné zadefinovanie rozmerov priamo v CSS (Zabráni preblikávaniu) -->
     <style>
         :root {
-            --nav-h: 74px;        /* Presná výška tvojho site-nav (py-5 + text) */
-            --footer-clear: 70px; /* Presná fixná výška tvojho site-footer */
+            --nav-h: 74px;
+            --footer-clear: 70px;
         }
         .hero-photo-left,
         .hero-photo-right {
             object-position: 50% 25%;
         }
         .hero-photo-left { transform: scaleX(-1); }
+        .hero-photo-right { transform: none; }
         @media (min-width: 1024px) {
             .hero-photo-left,
             .hero-photo-right {
@@ -30,53 +29,54 @@
             .hero-photo-left { transform: scaleX(-1) scale(1.15); }
             .hero-photo-right { transform: scale(1.15); }
         }
+        ::view-transition-old(root),
+        ::view-transition-new(root) { animation-duration: 200ms; }
     </style>
 </head>
 <body class="bg-base-200 text-base-content antialiased font-sans h-dvh overflow-hidden relative flex flex-col justify-between">
-
-    <!-- HLAVNÉ POZADIE -->
     <div class="absolute inset-0 bg-[#151515] z-0"></div>
-
-    <!-- NAVBAR -->
     <nav id="site-nav" class="absolute top-0 left-0 w-full z-50 px-4 md:px-8 py-5 flex flex-row items-center justify-between bg-[#151515] border-b border-base-300/10 shadow-lg">
-        <div>
+        <div data-testid="main-header">
             <a class="text-2xl font-black tracking-wider text-primary">Thor<span class="text-accent">QA</span></a>
         </div>
-        <div>
+        <div data-testid="main-buttons">
             <ul class="menu menu-horizontal px-0 font-medium gap-1 sm:gap-2">
-                <li><button class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3"
+                <li><button type="button"
+                            class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3"
                             hx-get="{% url 'home:home' %}"
                             hx-target="#main-content-container"
-                            hx-swap="innerHTML"
+                            hx-swap="innerHTML transition:true"
                             hx-push-url="true">Home</button></li>
-                <li><button class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3"
+                <li><button type="button"
+                            class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral px-2 sm:px-3"
                             hx-get="{% url 'about:about' %}"
                             hx-target="#main-content-container"
-                            hx-swap="innerHTML"
+                            hx-swap="innerHTML transition:true"
                             hx-push-url="true">About</button></li>
-                <li><button class="btn btn-primary btn-sm px-3 sm:px-4"
+                <li><button type="button"
+                            class="btn btn-primary btn-sm px-3 sm:px-4"
                             hx-get="{% url 'contact:contact' %}"
                             hx-target="#main-content-container"
-                            hx-swap="innerHTML"
+                            hx-swap="innerHTML transition:true"
                             hx-push-url="true">Contact</button></li>
             </ul>
         </div>
     </nav>
-
-    <!-- KONTRAJNRE PRE OBSAH: Dostal triedu flex-1, aby pohltil presný stred obrazovky -->
-    <div id="main-content-container" class="flex-1 relative w-full h-full">
+    <div id="main-content-container" class="flex-1 relative w-full h-full" data-testid="main-content-container-block">
         {% block content %}
         {% endblock %}
     </div>
-
-    <!-- PEVNÝ A PLNE TMAVÝ FOOTER -->
-    <footer id="site-footer" class="w-full h-[70px] bg-[#151515] border-t border-base-300/10 shadow-lg px-4 md:px-8 flex items-center justify-center relative z-50">
-        <div class="flex items-center gap-2 text-center">
+    <footer id="site-footer" class="w-full h-[70px] bg-[#151515] border-t border-base-300/10 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.3)] px-4 md:px-8 flex items-center justify-center fixed bottom-0 left-0 z-50">
+        <div class="flex items-center gap-2 text-center" data-testid="footer-element">
             <span class="font-black text-sm tracking-wider text-primary">Thor<span class="text-accent">QA</span></span>
             <span class="text-xs text-neutral-content/40">© {% now "Y" %} - Patrik Hrmo</span>
         </div>
     </footer>
-
-    <!-- SKRIPT updateChromeOffsets BOL KOMPLETNE ODSTRÁNENÝ -->
+    <script>
+    function updateChromeOffsets() { ... }
+    updateChromeOffsets();
+    window.addEventListener('resize', updateChromeOffsets);
+    window.addEventListener('load', updateChromeOffsets);
+    </script>
 </body>
 </html>
