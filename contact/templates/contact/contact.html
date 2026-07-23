@@ -1,0 +1,92 @@
+{% extends 'index/index.html' %}
+{% load static %}
+{% load partials %}
+{% block content %}
+    {% partialdef contact inline %}
+    <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden">
+
+        <!-- ==================== MOBILNÁ VERZIA (ZAFIXOVANÁ SYMETRIA) ==================== -->
+        <!-- justify-between a h-full zabezpečia, že sa layout prispôsobí a footer zostane stopercentne viditeľný -->
+        <div class="flex lg:hidden flex-col items-center justify-between w-full h-full overflow-hidden">
+
+            <!-- HORNÝ BLOK: Pôvodných 50dvh a max-h-24dvh drží fotky presne na rovnakej pozícii ako v Home a About -->
+            <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4 flex-shrink-0">
+
+                <!-- ODZNAK - Identický štýl s badge-accent, Rozostup 52px -->
+                <div class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
+                    GET IN TOUCH
+                </div>
+
+                <!-- FOTKY -->
+                <div class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] max-h-[24dvh]">
+                    <!-- Ľavá fotka -->
+                    <div class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
+                        <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
+                    </div>
+                    <!-- Pravá fotka -->
+                    <div class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
+                        <img src="{% static 'images/me.jpg' %}" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPODNÝ BLOK: Čisté textové kontaktné údaje pre mobil (Bez formulára, zmenšené písmo) -->
+            <div class="flex flex-col flex-1 items-center justify-center text-center w-full max-w-sm pb-4 overflow-hidden">
+
+                <!-- HLAVNÝ TEXT - Rozostup presných 52px -->
+                <p class="text-xs sm:text-sm opacity-85 font-light text-neutral-content leading-relaxed max-w-xs" style="margin-bottom: 52px;">
+                    Let's collaborate on securing your software stability. Feel free to reach out via email.
+                </p>
+
+                <!-- KONTAKTNÉ ÚDAJE -->
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-0.5">Direct Channel</span>
+                    <a href="mailto:patrik@thorqa.com" class="text-neutral-content font-bold text-sm tracking-wide hover:text-accent transition-colors">
+                        patrik@thorqa.com
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ==================== DESKTOP VERSION (VERTICAL FLUID COLUMN) ==================== -->
+        <!-- ĽAVÝ PANEL -->
+        <div class="hidden lg:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+             style="clip-path: ellipse(100% 100% at 0% 50%);">
+            <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
+        </div>
+
+        <!-- PRAVÝ PANEL -->
+        <div class="hidden lg:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+             style="clip-path: ellipse(100% 100% at 100% 50%);">
+            <img src="{% static 'images/me.jpg' %}" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+        </div>
+
+        <!-- HLAVNÝ OBSAH (Desktop - Plochý stĺpec vycentrovaný na absolútny stred) -->
+        <main class="hidden lg:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12">
+            <div class="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
+
+                <!-- 1. DESKTOP ODZNAK - Rozostup presných 52px -->
+                <div class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
+                    GET IN TOUCH
+                </div>
+
+                <!-- 2. DESKTOP TEXT - Rozostup presných 52px -->
+                <p class="text-lg opacity-85 font-light text-neutral-content leading-relaxed max-w-md" style="margin-bottom: 52px;">
+                    Let's collaborate on securing your software stability. <br> Feel free to reach out via email.
+                </p>
+
+                <!-- 3. DESKTOP KONTAKTNÉ ÚDAJE (Čistý minimalistický text) -->
+                <div class="flex flex-col items-center w-full max-w-md">
+                    <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">Direct Channel</span>
+                    <a href="mailto:patrik@thorqa.com" class="text-xl font-bold tracking-wide text-neutral-content hover:text-accent transition-colors">
+                        patrik@thorqa.com
+                    </a>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+    {% endpartialdef %}
+{% endblock %}
