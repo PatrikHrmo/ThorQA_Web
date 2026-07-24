@@ -10,6 +10,7 @@ django-htmx==1.28.0
 django-pytest==0.2.0
 django-tailwind==4.5.0
 django-template-partials==25.3
+dotenv==0.9.9
 gunicorn==26.0.0
 idna==3.18
 ImageIO==2.37.4
