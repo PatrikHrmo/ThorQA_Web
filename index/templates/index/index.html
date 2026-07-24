@@ -33,7 +33,7 @@
         ::view-transition-new(root) { animation-duration: 200ms; }
     </style>
 </head>
-<body class="bg-base-200 text-base-content antialiased font-sans h-dvh overflow-hidden relative flex flex-col justify-between">
+<body class="bg-base-200 text-base-content antialiased font-sans h-dvh overflow-hidden relative flex flex-col justify-between [overscroll-behavior-y:contain]">
     <div class="absolute inset-0 bg-[#151515] z-0"></div>
     <nav id="site-nav" class="absolute top-0 left-0 w-full z-50 px-4 md:px-8 py-5 flex flex-row items-center justify-between bg-[#151515] border-b border-base-300/10 shadow-lg">
         <div data-testid="main-header">
@@ -62,11 +62,11 @@
             </ul>
         </div>
     </nav>
-    <div id="main-content-container" class="flex-1 relative w-full h-full" data-testid="main-content-container-block">
+    <div id="main-content-container" class="flex-1 relative w-full h-full min-h-0" data-testid="main-content-container-block">
         {% block content %}
         {% endblock %}
     </div>
-    <footer id="site-footer" class="w-full h-[70px] bg-[#151515] border-t border-base-300/10 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.3)] px-4 md:px-8 flex items-center justify-center fixed bottom-0 left-0 z-50">
+    <footer id="site-footer" class="w-full h-[70px] bg-[#151515] border-t border-b-0 border-base-300/10 shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.3)] px-4 md:px-8 flex items-center justify-center fixed bottom-0 left-0 z-50">
         <div class="flex items-center gap-2 text-center" data-testid="footer-element">
             <span class="font-black text-sm tracking-wider text-primary">Thor<span class="text-accent">QA</span></span>
             <span class="text-xs text-neutral-content/40">© {% now "Y" %} - Patrik Hrmo</span>
@@ -77,6 +77,30 @@
     updateChromeOffsets();
     window.addEventListener('resize', updateChromeOffsets);
     window.addEventListener('load', updateChromeOffsets);
+
+    let touchStartY = 0;
+    window.addEventListener('touchstart', function(e) {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', function(e) {
+        const touchY = e.touches[0].clientY;
+        const scrollBlock = document.querySelector('.overflow-y-auto');
+
+        if (scrollBlock) {
+            const isScrollable = scrollBlock.scrollHeight > scrollBlock.clientHeight;
+            const isAtTop = scrollBlock.scrollTop === 0;
+            const isScrollingDown = touchY > touchStartY;
+
+            if (isScrollable && isAtTop && isScrollingDown) {
+                return;
+            }
+        }
+
+        if (!scrollBlock || !scrollBlock.contains(e.target)) {
+            e.preventDefault();
+        }
+    }, { passive: false });
     </script>
 </body>
 </html>
