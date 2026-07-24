@@ -1,0 +1,31 @@
+stages:
+  - build
+
+build:
+  stage: build
+  image: python:3.12
+
+  cache:
+    paths:
+      - .cache/pip
+      - theme/static_src/node_modules
+
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+  before_script:
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+
+    - curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+    - apt-get install -y nodejs
+
+  script:
+    - python manage.py tailwind install
+    - python manage.py tailwind build
+    - python manage.py check
+    - python manage.py collectstatic --noinput
+
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
