@@ -3,7 +3,7 @@
 {% load partials %}
 {% block content %}
     {% partialdef about inline %}
-    <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden">
+    <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden [-webkit-text-size-adjust:100%]">
         <div class="flex lg:hidden [@media(orientation:landscape)_and_(max-height:500px)]:hidden flex-col items-center justify-between w-full h-full overflow-hidden">
             <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4 flex-shrink-0">
                 <div data-testid="about-mobile-header" class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
@@ -18,8 +18,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col flex-1 items-center justify-start text-center w-full max-w-md pb-4 overflow-hidden" style="padding-top: 1px;">
-                <div data-testid="about-mobile-stack" class="flex flex-col gap-6 w-full max-w-xs text-center">
+            <div class="flex flex-col flex-1 items-center justify-start text-center w-full max-w-md pb-4 overflow-y-auto min-h-0" style="padding-top: 1px;">
+                <div data-testid="about-mobile-stack" class="flex flex-col gap-6 w-full max-w-xs text-center flex-shrink-0">
                     <div data-testid="about-mobile-activities">
                         <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-1">Activities</span>
                         <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-1 text-neutral-content font-medium text-xs">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div data-testid="about-desktop-image-left" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+<div data-testid="about-desktop-image-left" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
              style="clip-path: ellipse(100% 100% at 0% 50%);">
             <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
         </div>
