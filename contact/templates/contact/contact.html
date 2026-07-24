@@ -4,26 +4,25 @@
 {% block content %}
     {% partialdef contact inline %}
     <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden">
-
-        <div class="flex lg:hidden flex-col items-center justify-between w-full h-full overflow-hidden">
+        <div class="flex lg:hidden [@media(orientation:landscape)_and_(max-height:500px)]:hidden flex-col items-center justify-between w-full h-full">
             <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4 flex-shrink-0">
                 <div data-testid="contact-mobile-header" class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
                     GET IN TOUCH
                 </div>
-                <div data-testid="contact-mobile-photo-left" class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] max-h-[24dvh]">
-                    <div class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
+                <div class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] max-h-[24dvh]">
+                    <div data-testid="contact-mobile-photo-left" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
                         <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
                     </div>
                     <div data-testid="contact-mobile-photo-right" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
-                        <img src="{% static 'images/me2.jpg' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+                        <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
                     </div>
                 </div>
             </div>
-            <div data-testid="contact-mobile-text" class="flex flex-col flex-1 items-center justify-center text-center w-full max-w-sm pb-4 overflow-hidden">
-                <p class="text-xs sm:text-sm opacity-85 font-light text-neutral-content leading-relaxed max-w-xs" style="margin-bottom: 52px;">
-                    Let's collaborate on securing your software stability. Feel free to reach out via any channel below.
+            <div data-testid="contact-mobile-text" class="flex flex-col flex-1 items-center justify-start text-center w-full max-w-sm pb-4 overflow-hidden" style="padding-top: 1px;">
+                <p class="text-xs sm:text-sm opacity-85 font-light text-neutral-content leading-relaxed max-w-xs" style="margin-bottom: 32px;">
+                    Let's collaborate on securing your software stability.<br>Feel free to reach out via any channel below.
                 </p>
-                <div class="flex flex-col gap-3 w-full text-center">
+                <div class="flex flex-col gap-6 w-full text-center">
                     <div data-testid="contact-mobile-direct-channels">
                         <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">Direct Channels</span>
                         <div class="flex flex-col items-center gap-0.5 text-xs text-neutral-content font-medium">
@@ -32,7 +31,7 @@
                         </div>
                     </div>
                     <div data-testid="contact-mobile-bussiness">
-                        <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-1">Legal Identity</span>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-1">Business Details</span>
                         <div class="flex flex-col items-center gap-0.5 text-[10px] text-neutral-content/70">
                             <span>Patrik Hrmo</span>
                             <span>Business ID (IČO): 12345678</span>
@@ -42,23 +41,21 @@
                 </div>
             </div>
         </div>
-
-        <div data-testid="contact-desktop-photo-left" class="hidden lg:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+        <div data-testid="contact-desktop-photo-left" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
              style="clip-path: ellipse(100% 100% at 0% 50%);">
             <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
         </div>
-        <div data-testid="contact-desktop-photo-right" class="hidden lg:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+        <div data-testid="contact-desktop-photo-right" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
              style="clip-path: ellipse(100% 100% at 100% 50%);">
-            <img src="{% static 'images/me2.jpg' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+            <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
         </div>
-
-        <main class="hidden lg:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12">
+        <main class="hidden lg:flex [@media(orientation:landscape)_and_(max-height:500px)]:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12">
             <div class="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
                 <div data-testid="contact-desktop-header" class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
                     GET IN TOUCH
                 </div>
                 <p class="text-lg opacity-85 font-light text-neutral-content leading-relaxed max-w-md" style="margin-bottom: 52px;">
-                    Let's collaborate on securing your software stability. <br> Feel free to reach out via email or phone.
+                    Let's collaborate on securing your software stability.<br>Feel free to reach out via email or phone.
                 </p>
                 <div class="flex flex-col items-center w-full" style="margin-bottom: 52px;">
                     <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">Direct Channels</span>
@@ -69,7 +66,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-center w-full">
-                    <span class="text-xs uppercase font-bold tracking-widest text-accent block mb-3">Legal Identity</span>
+                    <span class="text-xs uppercase font-bold tracking-widest text-accent block mb-3">Business Details</span>
                     <div class="flex flex-col items-center gap-2 text-neutral-content font-medium text-sm leading-none">
                         <span>Patrik Hrmo</span>
                         <span>Business ID (IČO): 12345678</span>
@@ -78,7 +75,6 @@
                 </div>
             </div>
         </main>
-
     </div>
     {% endpartialdef %}
 {% endblock %}

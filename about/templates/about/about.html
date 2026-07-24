@@ -4,9 +4,7 @@
 {% block content %}
     {% partialdef about inline %}
     <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden">
-
-        <!-- MOBILE -->
-        <div class="flex lg:hidden flex-col items-center justify-between w-full h-full overflow-hidden">
+        <div class="flex lg:hidden [@media(orientation:landscape)_and_(max-height:500px)]:hidden flex-col items-center justify-between w-full h-full overflow-hidden">
             <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4 flex-shrink-0">
                 <div data-testid="about-mobile-header" class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
                     WHAT I DO
@@ -15,16 +13,16 @@
                     <div data-testid="about-mobile-photo-left" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
                         <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
                     </div>
-                    <div data-testid="about-mobile-photo-left" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
-                        <img src="{% static 'images/me2.jpg' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+                    <div data-testid="about-mobile-photo-right" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
+                        <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col flex-1 items-center justify-center text-center w-full max-w-md pt-[52px] pb-[52px] gap-4 overflow-hidden">
-                <div data-testid="about-mobile-stack" class="flex flex-col gap-2 w-full max-w-xs text-center">
+            <div class="flex flex-col flex-1 items-center justify-start text-center w-full max-w-md pb-4 overflow-hidden" style="padding-top: 1px;">
+                <div data-testid="about-mobile-stack" class="flex flex-col gap-6 w-full max-w-xs text-center">
                     <div data-testid="about-mobile-activities">
-                        <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-0.5">Activities</span>
-                        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-0 text-neutral-content font-medium text-xs">
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-1">Activities</span>
+                        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-1 text-neutral-content font-medium text-xs">
                             <span>Test Design</span>
                             <span class="text-neutral-content/20 select-none">•</span>
                             <span>Execution</span>
@@ -39,7 +37,7 @@
                         </div>
                     </div>
                     <div data-testid="about-mobile-tools">
-                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-0.5">Core Tools</span>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">Core Tools</span>
                         <div class="flex flex-wrap justify-center gap-1.5">
                             <span class="text-neutral-content font-bold text-xs">Robot Framework</span>
                             <span class="text-neutral-content/30 text-xs select-none">•</span>
@@ -47,8 +45,8 @@
                         </div>
                     </div>
                     <div data-testid="about-mobile-coverage">
-                        <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-0.5">Coverage</span>
-                        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-0 text-neutral-content font-medium text-xs">
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-accent block mb-1">Coverage</span>
+                        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-1 text-neutral-content font-medium text-xs">
                             <span>UI</span>
                             <span class="text-neutral-content/20 select-none">•</span>
                             <span>Web</span>
@@ -59,8 +57,8 @@
                         </div>
                     </div>
                     <div data-testid="about-mobile-areas">
-                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-0.5">Domains</span>
-                        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-0 text-neutral-content font-medium text-xs">
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">Domains</span>
+                        <div class="flex flex-wrap justify-center gap-x-1.5 gap-y-1 text-neutral-content font-medium text-xs">
                             <span>Document & PDF Handling</span>
                             <span class="text-neutral-content/20 select-none">•</span>
                             <span>Payments</span>
@@ -79,16 +77,15 @@
                 </div>
             </div>
         </div>
-        <!-- DESKTOP -->
-        <div data-testid="about-desktop-image-left" class="hidden lg:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+        <div data-testid="about-desktop-image-left" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
              style="clip-path: ellipse(100% 100% at 0% 50%);">
             <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
         </div>
-        <div data-testid="about-desktop-image-right" class="hidden lg:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+        <div data-testid="about-desktop-image-right" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
              style="clip-path: ellipse(100% 100% at 100% 50%);">
-            <img src="{% static 'images/me2.jpg' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+            <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
         </div>
-        <main class="hidden lg:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12">
+        <main class="hidden lg:flex [@media(orientation:landscape)_and_(max-height:500px)]:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12">
             <div class="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
                 <div data-testid="about-desktop-header" class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
                     WHAT I DO

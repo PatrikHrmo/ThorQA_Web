@@ -1,0 +1,32 @@
+{% extends 'index/index.html' %}
+{% load static %}
+{% load partials %}
+{% block popup %}
+    {% partialdef popup inline %}
+    <div id="popup-overlay"
+         onclick="if(event.target === this) this.remove()"
+         class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-0 transition-opacity duration-300 cursor-pointer">
+        <div class="bg-neutral text-neutral-content border border-white/10 rounded-2xl w-[85vw] md:w-[60vw] h-[60vh] p-6 shadow-2xl relative flex flex-col justify-between overflow-hidden cursor-default"
+             onclick="event.stopPropagation();">
+            <div id="test-video-frame"
+                 class="flex-1 w-full h-full flex items-center justify-center overflow-hidden min-h-0 mb-4"
+                 style="container-type: size;">
+                <div class="relative rounded-lg overflow-hidden"
+                     style="aspect-ratio: 16 / 9;
+                            width: min(100cqw, calc(100cqh * 16 / 9));
+                            height: min(100cqh, calc(100cqw * 9 / 16));">
+                    <iframe
+                        class="absolute top-0 left-0 w-full h-full rounded-lg"
+                        src="https://www.youtube.com/embed/Jwka-DZhs7Y"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endpartialdef %}
+{% endblock %}
