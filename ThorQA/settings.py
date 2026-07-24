@@ -1,11 +1,12 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = prod_secret_key
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = prod_debug
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
