@@ -8,8 +8,12 @@
          class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-0 transition-opacity duration-300 cursor-pointer">
         <div class="bg-neutral text-neutral-content border border-white/10 rounded-2xl w-[85vw] md:w-[60vw] h-[60vh] p-6 shadow-2xl relative flex flex-col justify-between overflow-hidden cursor-default"
              onclick="event.stopPropagation();">
+            <p data-testid="popup-video-caption"
+               class="text-xs sm:text-sm opacity-85 font-light text-neutral-content leading-relaxed text-center flex-shrink-0 mb-8">
+                This is a test that compares the two images on the page using DocTest library in Robot Framework:
+            </p>
             <div id="test-video-frame"
-                 class="flex-1 w-full h-full flex items-center justify-center overflow-hidden min-h-0 mb-4"
+                 class="flex-1 w-full h-full flex items-center justify-center overflow-hidden min-h-0"
                  style="container-type: size;">
                 <div class="relative rounded-lg overflow-hidden"
                      style="aspect-ratio: 16 / 9;

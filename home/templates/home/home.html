@@ -8,12 +8,12 @@
         {% block popup %}
         {% endblock %}
     </div>
-        <div class="flex lg:hidden [@media(orientation:landscape)_and_(max-height:500px)]:hidden flex-col items-center justify-between w-full h-full overflow-hidden">
-            <div class="flex h-[50dvh] w-full flex-col items-center justify-center pt-4 flex-shrink-0">
-                <div data-testid="home-mobile-header" class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
+        <div class="flex lg:hidden [@media(orientation:landscape)_and_(max-height:500px)]:hidden flex-col items-center justify-start w-full h-full overflow-y-auto pt-[104px] pb-4">
+            <div class="flex w-full flex-col items-center justify-center flex-shrink-0">
+                <div data-testid="home-mobile-header" class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 24px;">
                     FREELANCE QA ENGINEER
                 </div>
-                <div class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] max-h-[24dvh]">
+                <div class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] flex-shrink-0">
                     <div data-testid="home-mobile-photo-left" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
                         <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
                     </div>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col flex-1 items-center justify-start text-center w-full max-w-md pb-4 overflow-y-auto min-h-0" data-testid="home-main-block" style="padding-top: 1px;">
+            <div class="flex flex-col flex-shrink-0 items-center justify-start text-center w-full max-w-md pt-6 pb-4" data-testid="home-main-block">
                 <h1 class="text-2xl sm:text-3xl font-black tracking-tight text-neutral-content leading-tight whitespace-normal flex-shrink-0" style="margin-bottom: 24px;">
                     SPOT 5 DIFFERENCES<br>or just leave it to me instead
                 </h1>
@@ -46,23 +46,26 @@
              style="clip-path: ellipse(100% 100% at 100% 50%);">
             <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
         </div>
-        <main class="hidden lg:flex [@media(orientation:landscape)_and_(max-height:500px)]:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center px-12" data-testid="home-desktop-mainblock">
-            <div class="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
-                <div class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center" style="margin-bottom: 52px;">
-                    FREELANCE QA ENGINEER
-                </div>
-                <h1 class="text-4xl md:text-5xl xl:text-6xl font-black tracking-tight text-neutral-content leading-tight whitespace-normal" style="margin-bottom: 52px;">
-                    SPOT 5 DIFFERENCES<br>or just leave it to me instead
-                </h1>
-                <p class="text-lg opacity-85 font-light text-neutral-content leading-relaxed max-w-md" style="margin-bottom: 52px;">
-                    professional test automation & QA services<br>to catch what human eyes often miss
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto">
-                    <button type="button"
-                            class="btn btn-outline btn-md text-white border-white hover:bg-white hover:text-neutral w-64"
-                            hx-get="{% url 'home:test' %}"
-                            hx-target="#popup-window"
-                            hx-swap="innerHTML">SHOW ME</button>
+        <main class="hidden lg:flex [@media(orientation:landscape)_and_(max-height:500px)]:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center overflow-hidden px-12 py-6"
+              style="container-type: inline-size;">
+            <div style="transform: scale(clamp(0.4, calc(100cqw / 896px), 1)); transform-origin: center;">
+                <div class="flex flex-col items-center text-center gap-12" style="width: 896px;">
+                    <div class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center">
+                        FREELANCE QA ENGINEER
+                    </div>
+                    <h1 class="text-6xl font-black tracking-tight text-neutral-content leading-tight whitespace-normal">
+                        SPOT 5 DIFFERENCES<br>or just leave it to me instead
+                    </h1>
+                    <p class="text-lg opacity-85 font-light text-neutral-content leading-relaxed max-w-md mx-auto">
+                        professional test automation & QA services<br>to catch what human eyes often miss
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto">
+                        <button type="button"
+                                class="btn btn-outline btn-md text-white border-white hover:bg-white hover:text-neutral w-64"
+                                hx-get="{% url 'home:test' %}"
+                                hx-target="#popup-window"
+                                hx-swap="innerHTML">SHOW ME</button>
+                    </div>
                 </div>
             </div>
         </main>
