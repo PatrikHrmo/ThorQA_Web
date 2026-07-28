@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'template_partials',
     'about',
     'contact',
+    'demo',
 ]
 
 TAILWIND_APP_NAME = 'theme'
