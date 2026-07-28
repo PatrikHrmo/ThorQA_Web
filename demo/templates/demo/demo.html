@@ -1,0 +1,276 @@
+{% extends 'index/index.html' %}
+{% load static %}
+{% load partials %}
+{% block content %}
+    {% partialdef demo inline %}
+    <div id="hero-content" class="relative w-full h-full pt-[var(--nav-h)] pb-[var(--footer-clear)] z-20 flex flex-col lg:block px-6 overflow-hidden [-webkit-text-size-adjust:100%]">
+        <div class="flex lg:hidden [@media(orientation:landscape)_and_(max-height:500px)]:hidden flex-col items-center justify-start w-full h-full overflow-y-auto pt-[30px] pb-4">
+            <div class="flex w-full flex-col items-center justify-center flex-shrink-0">
+                <div data-testid="contact-mobile-header" class="badge badge-accent font-bold tracking-wide h-7 px-3 text-[10px] flex items-center justify-center leading-none text-center" style="margin-bottom: 24px;">
+                    EXPLORE
+                </div>
+                <div class="flex flex-row justify-center items-center w-full max-w-sm aspect-[2/1] flex-shrink-0">
+                    <div data-testid="contact-mobile-photo-left" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 100% 50%);">
+                        <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
+                    </div>
+                    <div data-testid="contact-mobile-photo-right" class="w-1/2 h-full overflow-hidden pointer-events-none" style="clip-path: ellipse(100% 100% at 0% 50%);">
+                        <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+                    </div>
+                </div>
+            </div>
+            <div data-testid="contact-mobile-text" class="flex flex-col flex-shrink-0 items-center justify-start text-center w-full max-w-sm pt-6 pb-4">
+                <div class="flex flex-col gap-8 w-full text-center flex-shrink-0">
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">ThorQA</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                <div id="test-video-frame1-mobile"
+                                     class="flex-1 w-full h-full flex items-center justify-center overflow-hidden min-h-0"
+                                     style="container-type: size;">
+                                        <div class="relative rounded-lg overflow-hidden"
+                                            style="aspect-ratio: 16 / 9;
+                                            width: min(100cqw, calc(100cqh * 16 / 9));
+                                            height: min(100cqh, calc(100cqw * 9 / 16));">
+                                            <iframe
+                                                class="absolute top-0 left-0 w-full h-full rounded-lg"
+                                                src="https://www.youtube.com/embed/POTmRWI1thI"
+                                                title="ThorQA"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                short presentation of ThorQA webpage and its components
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">ThorQA - Playwright Smoke Testing</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                <div id="test-video-frame2-mobile"
+                                     class="flex-1 w-full h-full flex items-center justify-center overflow-hidden min-h-0"
+                                     style="container-type: size;">
+                                        <div class="relative rounded-lg overflow-hidden"
+                                            style="aspect-ratio: 16 / 9;
+                                            width: min(100cqw, calc(100cqh * 16 / 9));
+                                            height: min(100cqh, calc(100cqw * 9 / 16));">
+                                            <iframe
+                                                class="absolute top-0 left-0 w-full h-full rounded-lg"
+                                                src="https://www.youtube.com/embed/hmleAs_9nQw"
+                                                title="ThorQA Playwright Smoke Testing"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                Playwright smoke testing demonstration
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">KidŠatník</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                short presentation of a personal project called KidŠatník and its components
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">KidŠatník - Smoke Testing</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                Robot Framework smoke testing demonstration
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">KidŠatník - Functional Testing</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                Robot Framework functional testing demonstration
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">KidŠatník - Access Level Testing</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                Robot Framework demonstration of user permissions testing
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">KidŠatník - API Testing</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                Robot Framework API testing demonstration
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="text-[8px] uppercase font-bold tracking-widest text-primary block mb-1">KidŠatník - E2E Testing</span>
+                        <div class="flex flex-col items-center gap-2 text-xs text-neutral-content font-medium">
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-[10px] text-neutral-content/55">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-[10px] text-neutral-content/70 mt-1 leading-normal max-w-xs">
+                                Robot Framework E2E testing demonstration
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-testid="contact-desktop-photo-left" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] left-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+             style="clip-path: ellipse(100% 100% at 0% 50%);">
+            <img src="{% static 'images/me.jpg' %}" alt="ThorQA Left" class="w-full h-full object-cover hero-photo-left" />
+        </div>
+        <div data-testid="contact-desktop-photo-right" class="hidden lg:block [@media(orientation:landscape)_and_(max-height:500px)]:block absolute top-[80px] right-0 w-[25%] h-[calc(100dvh-80px-70px)] z-10 pointer-events-none overflow-hidden"
+             style="clip-path: ellipse(100% 100% at 100% 50%);">
+            <img src="{% static 'images/me2.png' %}?v=2" alt="ThorQA Right" class="w-full h-full object-cover hero-photo-right" />
+        </div>
+        <main class="hidden lg:flex [@media(orientation:landscape)_and_(max-height:500px)]:flex absolute top-0 bottom-0 left-[25%] w-[50%] z-20 flex flex-col items-center justify-center overflow-hidden px-12"
+              style="container-type: inline-size;">
+            <div style="transform: scale(clamp(0.4, calc(100cqw / 896px), 1)); transform-origin: center;">
+                <div class="flex flex-col items-center text-center gap-8 overflow-y-auto max-h-[80vh] px-4" style="width: 896px;">
+                    <div data-testid="contact-desktop-header" class="badge badge-accent font-bold tracking-wide h-8 px-4 text-xs flex items-center justify-center leading-none text-center flex-shrink-0">
+                        EXPLORE
+                    </div>
+                    <div class="flex flex-col gap-12 w-full max-w-xl">
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">ThorQA</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                <div id="test-video-frame1-desktop"
+                                     class="flex-1 w-full h-full flex items-center justify-center overflow-hidden min-h-0"
+                                     style="container-type: size;">
+                                        <div class="relative rounded-lg overflow-hidden"
+                                            style="aspect-ratio: 16 / 9;
+                                            width: min(100cqw, calc(100cqh * 16 / 9));
+                                            height: min(100cqh, calc(100cqw * 9 / 16));">
+                                            <iframe
+                                                class="absolute top-0 left-0 w-full h-full rounded-lg"
+                                                src="https://www.youtube.com/embed/POTmRWI1thI"
+                                                title="ThorQA"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                short presentation of ThorQA webpage and its components
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">ThorQA - Playwright Smoke Testing</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                <div id="test-video-frame2-desktop"
+                                     class="flex-1 w-full h-full flex items-center justify-center overflow-hidden min-h-0"
+                                     style="container-type: size;">
+                                        <div class="relative rounded-lg overflow-hidden"
+                                            style="aspect-ratio: 16 / 9;
+                                            width: min(100cqw, calc(100cqh * 16 / 9));
+                                            height: min(100cqh, calc(100cqw * 9 / 16));">
+                                            <iframe
+                                                class="absolute top-0 left-0 w-full h-full rounded-lg"
+                                                src="https://www.youtube.com/embed/hmleAs_9nQw"
+                                                title="ThorQA Playwright Smoke Testing"
+                                                frameborder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                allowfullscreen>
+                                            </iframe>
+                                        </div>
+                                </div>
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                Playwright smoke testing demonstration
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">KidŠatník</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                short presentation of a personal project called KidŠatník and its components
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">KidŠatník - Smoke Testing</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                Robot Framework smoke testing demonstration
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">KidŠatník - Functional Testing</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                Robot Framework functional testing demonstration
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">KidŠatník - Access Level Testing</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                Robot Framework demonstration of user permissions testing
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">KidŠatník - API Testing</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                Robot Framework API testing demonstration
+                            </p>
+                        </div>
+                        <div class="flex flex-col items-center w-full">
+                            <span class="text-xs uppercase font-bold tracking-widest text-primary block mb-3">KidŠatník - E2E Testing</span>
+                            <div class="w-full aspect-video bg-neutral/30 rounded border border-neutral-content/10 flex items-center justify-center text-sm text-neutral-content/50 mb-3">
+                                [ to be uploaded soon ]
+                            </div>
+                            <p class="text-sm font-medium text-neutral-content/75 leading-relaxed max-w-md">
+                                Robot Framework E2E testing demonstration
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    {% endpartialdef %}
+{% endblock %}
