@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThorQA</title>
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/favicon.svg' %}">
     {% tailwind_css %}
     {% htmx_script %}
     <style>
@@ -42,13 +43,13 @@
         <div data-testid="main-buttons">
             <ul class="menu menu-horizontal px-0 font-medium gap-1 sm:gap-2">
                 <li><button type="button"
-                            class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none transition-all duration-200 px-2 sm:px-3"
+                            class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral active:bg-white active:text-neutral active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none transition-all duration-200 px-2 sm:px-3"
                             hx-get="{% url 'home:home' %}"
                             hx-target="#main-content-container"
                             hx-swap="innerHTML transition:true"
                             hx-push-url="true">Home</button></li>
                 <li><button type="button"
-                            class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none transition-all duration-200 px-2 sm:px-3"
+                            class="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-neutral active:bg-white active:text-neutral active:scale-95 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none transition-all duration-200 px-2 sm:px-3"
                             hx-get="{% url 'about:about' %}"
                             hx-target="#main-content-container"
                             hx-swap="innerHTML transition:true"
@@ -73,14 +74,27 @@
         </div>
     </footer>
     <script>
-    function updateChromeOffsets() { ... }
+    function updateChromeOffsets() {
+        const nav = document.getElementById('site-nav');
+        const footer = document.getElementById('site-footer');
+        if (nav) {
+            document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+        }
+        if (footer) {
+            document.documentElement.style.setProperty('--footer-clear', footer.offsetHeight + 'px');
+        }
+    }
     updateChromeOffsets();
     window.addEventListener('resize', updateChromeOffsets);
     window.addEventListener('load', updateChromeOffsets);
 
     let touchStartY = 0;
+    let pullDistance = 0;
+    const PULL_TO_REFRESH_THRESHOLD = 80; // px of downward pull needed to trigger reload
+
     window.addEventListener('touchstart', function(e) {
         touchStartY = e.touches[0].clientY;
+        pullDistance = 0;
     }, { passive: true });
 
     window.addEventListener('touchmove', function(e) {
@@ -93,14 +107,24 @@
             const isScrollingDown = touchY > touchStartY;
 
             if (isScrollable && isAtTop && isScrollingDown) {
+                pullDistance = touchY - touchStartY;
                 return;
             }
         }
+
+        pullDistance = 0;
 
         if (!scrollBlock || !scrollBlock.contains(e.target)) {
             e.preventDefault();
         }
     }, { passive: false });
+
+    window.addEventListener('touchend', function() {
+        if (pullDistance > PULL_TO_REFRESH_THRESHOLD) {
+            window.location.reload();
+        }
+        pullDistance = 0;
+    }, { passive: true });
     </script>
 </body>
 </html>
