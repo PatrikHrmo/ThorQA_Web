@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django_htmx',
     'template_partials',
     'about',
-    'contact',
     'demo',
 ]
 
